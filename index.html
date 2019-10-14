@@ -1,34 +1,69 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TGFM3ZL');
+  </script>
+  <!-- End Google Tag Manager -->
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TGFM3ZL');</script>
-<!-- End Google Tag Manager -->
-
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>my-first-website</title>
   <LINK href="styles.css" rel="stylesheet" type="text/css">
+  <LINK href="button.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-  
- <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGFM3ZL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --> 
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGFM3ZL" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <p>Hello World! I’m [Jason Gao]. This is my website!</p>
-  
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+  <button class="button button-primary button-rounded" type="button" onclick="sendHttpBin">Send Sample Data
+    To HTTPBIN</button>
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
 
 </body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+
+<script>
+  function sendHttpBin() {
+    var gtmData = {
+      clickTime: new Date().getTime()
+    }
+    dataLayer.push(gtmData)
+    $.ajax({
+      url: "http://httpbin.org/get",
+      type: "GET",
+      data: gtmData,
+      success: function (response) {
+        console.log(response)
+      },
+      error: function (xhr) {
+        console.error(xhr)
+      }
+    });
+  }
+</script>
+
 </html>
